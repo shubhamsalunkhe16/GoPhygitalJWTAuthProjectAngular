@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import Swal from 'sweetalert2';
 
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private login: LoginService) {}
+  constructor(private login: LoginService, private router: Router) {}
 
   public userLogin = {
     username: '',
@@ -48,9 +49,11 @@ export class LoginComponent implements OnInit {
 
             let role = this.login.getRole();
             if (role == 'ADMIN') {
-              window.location.href = '/admin';
+              //window.location.href = '/admin';
+              this.router.navigate(['/admin']);
             } else if (role == 'USER') {
-              window.location.href = '/user';
+              //window.location.href = '/user';
+              this.router.navigate(['/user']);
             } else {
               console.log('Error to get role!!!');
               this.login.logout();
