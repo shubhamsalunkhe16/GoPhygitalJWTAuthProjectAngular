@@ -1,0 +1,44 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h1 class="mt-20">Registeration Form</h1>
+
+                <form (ngSubmit)="formSubmit()" class="mb-20">
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Name</mat-label>
+                        <input matInput required name="name" [(ngModel)]="user.name">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width mb-20">
+                        <mat-label>Username</mat-label>
+                        <input type="email" matInput required name="username" [(ngModel)]="user.username">
+                        <mat-hint>Enter your email</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput required name="password" [(ngModel)]="user.password">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput required name="confirmPassword"
+                            [(ngModel)]="user.confirmPassword">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Language *</mat-label>
+                        <mat-select name="language" [(ngModel)]="user.language">
+                            <mat-option value="EN">EN</mat-option>
+                            <mat-option value="DE">DE</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Mobile Number</mat-label>
+                        <input type="number" matInput name="mobileNo" [(ngModel)]="user.mobileNo">
+                    </mat-form-field>
+                    <div class="text-center">
+                        <button mat-raised-button color="warn" type="submit" class="mr-20">Submit</button>
+                        <button mat-raised-button color="warn" type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

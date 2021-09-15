@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row text-center">
+    <h1 class="pt-4">User Details</h1>
+    <table class="table table-striped" id='tab' *ngIf="login.isLanguageEN()">
+
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <td>{{login.getUser().name}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Username</th>
+          <td>{{login.getUser().username}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Language</th>
+          <td>{{login.getUser().language}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Mobile number</th>
+          <td>{{login.getUser().mobileNo}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped" id='tab' *ngIf="!login.isLanguageEN()">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <td>{{login.getUser().name}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Nutzername</th>
+          <td>{{login.getUser().username}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Sprache</th>
+          <td>{{login.getUser().language}}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>Handynummer</th>
+          <td>{{login.getUser().mobileNo}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<mat-toolbar color="warn">
+    <a [routerLink]="['/']" routerLinkActive="router-link-active" mat-icon-button class="example-icon" aria-label="Example home icon">
+      <mat-icon>home</mat-icon>
+    </a>
+    <span>GoPhygital</span>
+    <span class="example-spacer"></span>
+    <a *ngIf="!login.isloggedIn()" [routerLink]="['/signup']" routerLinkActive="router-link-active" mat-button>Register</a>
+    <a *ngIf="!login.isloggedIn()" [routerLink]="['/login']" routerLinkActive="router-link-active"  mat-button>Login</a>
+    <a (click)="logout()" *ngIf="login.isloggedIn()" [routerLink]="['/login']" routerLinkActive="router-link-active"  mat-button>Logout</a>
+  </mat-toolbar>
