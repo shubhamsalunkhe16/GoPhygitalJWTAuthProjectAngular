@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   public userLogin = {
     username: '',
     password: '',
+    enabled: '',
+    emailVerified: '',
   };
 
   ngOnInit(): void {}
@@ -34,25 +36,40 @@ export class LoginComponent implements OnInit {
         this.userLogin.username
       )
     ) {
-      Swal.fire('', 'Invalid email address', 'warning');
+      Swal.fire(
+        'Invalid email address',
+        'Please insert correct email address',
+        'warning'
+      );
       return;
     }
 
     this.login.generateToken(this.userLogin).subscribe(
       (data: any) => {
         console.log(data);
+        if (data == null) {
+          Swal.fire('Invalid User', 'Please try again!!!', 'error');
+          return;
+        }
         this.login.setToken(data.token);
         this.login.getCurrentUser().subscribe(
           (user: any) => {
             this.login.setUser(user);
             console.log(user);
+            console.log(user.emailVerified);
+            if (!user.emailVerified) {
+              Swal.fire(
+                'User is not verified',
+                'Please confirm your email address!!!',
+                'error'
+              );
+              return;
+            }
 
             let role = this.login.getRole();
             if (role == 'ADMIN') {
-              //window.location.href = '/admin';
               this.router.navigate(['/admin']);
             } else if (role == 'USER') {
-              //window.location.href = '/user';
               this.router.navigate(['/user']);
             } else {
               console.log('Error to get role!!!');
@@ -65,7 +82,9 @@ export class LoginComponent implements OnInit {
         );
       },
       (error) => {
-        Swal.fire('', 'Invalid User...Try again!!!', 'error');
+        console.log(error);
+        //Swal.fire('Something went wrong', error.message, 'error');
+        Swal.fire('Invalid User', 'Please try again!!!', 'error');
       }
     );
   }

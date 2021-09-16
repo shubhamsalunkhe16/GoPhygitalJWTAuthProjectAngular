@@ -8,17 +8,19 @@
                     <th scope="col">Name</th>
                     <th scope="col">Username</th>
                     <th scope="col">Created On</th>
-                    <th scope="col">is Enabled</th>
+                    <th scope="col">Is Enabled</th>
+                    <th scope="col" colspan="2">Action</th>
 
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let e of users;">
-                    <td>{{ e.userId }}</td>
-                    <td>{{ e.name }}</td>
-                    <td>{{ e.username }}</td>
-                    <td>{{ e.createdOn }}</td>
-                    <td>{{ e.enabled }}</td>
+                <tr *ngFor="let user of users;">
+                    <td>{{ user.userId }}</td>
+                    <td class="text-capitalize">{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.createdOn }}</td>
+                    <td class="text-capitalize">{{ user.enabled }}</td>
+                    <td><a class="btn btn-success mr-20" (click)="enableUser(user)">Enable</a><a class="btn btn-danger" (click)="disableUser(user)">Disable</a></td>
                 </tr>
             </tbody>
         </table>
