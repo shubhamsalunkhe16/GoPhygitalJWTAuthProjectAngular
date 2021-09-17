@@ -20,12 +20,9 @@ export class SignupComponent implements OnInit {
     mobileNo: '',
   };
 
-  
-
   ngOnInit(): void {}
 
   formSubmit() {
-    
     let registerUser = {
       name: this.user.name,
       username: this.user.username,
@@ -75,11 +72,24 @@ export class SignupComponent implements OnInit {
     this.userService.registerUser(registerUser).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire('', `Verification mail is sent to email address : ${this.user.username}`, 'success');
+        Swal.fire(
+          '',
+          `Verification mail is sent to email address : ${this.user.username}`,
+          'success'
+        );
       },
       (error) => {
         console.log(error);
-        Swal.fire('', 'Something went wrong', 'error');
+        console.log(error.error == 'User already exists');
+        if (error.error == 'UserAlreadyFoundException') {
+          Swal.fire(
+            'User is already exists',
+            'Try with the new User!!!',
+            'error'
+          );
+        } else {
+          Swal.fire('', 'Something went wrong', 'error');
+        }
       }
     );
   }
