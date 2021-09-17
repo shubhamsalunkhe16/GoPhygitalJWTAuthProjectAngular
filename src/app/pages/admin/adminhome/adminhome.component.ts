@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./adminhome.component.css'],
 })
 export class AdminhomeComponent implements OnInit {
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService) {}
 
   users: any;
   usersList = [];
@@ -62,7 +62,6 @@ export class AdminhomeComponent implements OnInit {
 
   disableUser(user: any) {
     if (user.enabled) {
-    
       Swal.fire({
         title: 'Do you want to disable user?',
         showDenyButton: true,
